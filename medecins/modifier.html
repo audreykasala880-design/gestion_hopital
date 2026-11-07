@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifier un Médecin — Centre Médical Hope</title>
+    <meta name="description" content="Application web de gestion des rendez-vous médicaux — Centre Médical Hope Kinshasa">
+
+    <!-- Fonts : Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal avec vidage automatique du cache navigateur -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Favicon SVG en Vert Médical -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f764a'/><path d='M50 20 C35 10 20 25 20 40 C20 60 50 82 50 82 C50 82 80 60 80 40 C80 25 65 10 50 20 Z' fill='none' stroke='white' stroke-width='6'/><path d='M35 48 h8 l5 -12 l6 22 l5 -14 l4 4 h8' fill='none' stroke='%2334d399' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="app-body">
+
+<div class="app-layout">
+
+    <!-- ============================================================
+       SIDEBAR GAUCHE (Navigation Dashboard)
+       ============================================================ -->
+    <aside class="app-sidebar" id="appSidebar">
+        <div class="sidebar-header">
+            <a href="../index.html" class="sidebar-brand">
+                <div class="brand-symbol">
+                    <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
+                        <rect width="40" height="40" rx="10" fill="#095c3b"/>
+                        <path d="M20 9 C13 3 5 13 5 21 C5 29 20 37 20 37 C20 37 35 29 35 21 C35 13 27 3 20 9 Z" stroke="#34d399" stroke-width="2.5" fill="none"/>
+                        <path d="M12 21 h4 l3 -6 l4 12 l3 -8 l3 2 h4" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">Centre Médical Hope</span>
+                    <span class="brand-tag">Centre Médical Hope</span>
+                </div>
+            </a>
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <!-- Accueil (visible par tous) -->
+                <li>
+                    <a href="../index.html" class="sidebar-link ">
+                        <span class="sidebar-icon">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </span>
+                        <span class="sidebar-text">Accueil</span>
+                    </a>
+                </li>
+
+                <!-- Prendre RDV (visible par tous, redirige vers connexion si pas connecté) -->
+                <li>
+                    <a href="../rendez_vous/prendre.html" class="sidebar-link ">
+                        <span class="sidebar-icon">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                        </span>
+                        <span class="sidebar-text">Prendre RDV</span>
+                    </a>
+                </li>
+
+                <!-- ESPACE PATIENT -->
+                                    <li>
+                        <a href="../patients/espace.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            <span class="sidebar-text">Mon Espace Patient</span>
+                        </a>
+                    </li>
+                
+                <!-- SECTION GESTION CLINIQUE (Réservée au Staff : Admin / Réceptionniste) -->
+                                    <li style="padding: 12px 16px 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4);">
+                        Gestion Médicale
+                    </li>
+                    <li>
+                        <a href="../medecins/index.html" class="sidebar-link active">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </span>
+                            <span class="sidebar-text">Médecins</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../patients/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            <span class="sidebar-text">Patients (Base)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../salles/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><circle cx="6" cy="12" r="1"/></svg>
+                            </span>
+                            <span class="sidebar-text">Salles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../disponibilites/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </span>
+                            <span class="sidebar-text">Disponibilités</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../rendez_vous/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                            </span>
+                            <span class="sidebar-text">Liste des RDV</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../statistiques/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </span>
+                            <span class="sidebar-text">Statistiques</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../tests/run_tests.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                            </span>
+                            <span class="sidebar-text">Tests TP (PO II)</span>
+                        </a>
+                    </li>
+                            </ul>
+        </nav>
+
+        <!-- Bas de sidebar : Profil Utilisateur (Staff ou Patient ou Bouton Connexion) -->
+        <div class="sidebar-footer">
+                            <div class="sidebar-user">
+                    <div class="user-avatar-circle">
+                        <span>D</span>
+                    </div>
+                    <div class="user-details">
+                        <strong class="user-name">Démo Réception</strong>
+                        <span class="user-role">Receptionniste</span>
+                    </div>
+                    <a href="#demo-action" class="logout-icon-btn" title="Se déconnecter de l'espace pro" data-demo-action="logout">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    </a>
+                </div>
+                    </div>
+    </aside>
+
+    <!-- Overlay sombre pour mobile -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ============================================================
+       ZONE PRINCIPALE DU DASHBOARD (En-tête haut + Contenu)
+       ============================================================ -->
+    <div class="app-main">
+
+        <!-- Top bar supérieure -->
+        <header class="app-topbar">
+            <div class="topbar-left">
+                <button class="topbar-menu-toggle" id="topbarMenuToggle" aria-label="Ouvrir le menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <h1 class="topbar-page-title">Médecins</h1>
+            </div>
+
+            <div class="topbar-right">
+                <!-- Notifications cliniques -->
+                <div class="topbar-action-btn" title="Centre Médical Hope">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <span class="notification-dot"></span>
+                </div>
+
+                <!-- Utilisateur dropdown / pill -->
+                                    <div class="topbar-user-pill">
+                        <div class="topbar-user-avatar">
+                            <span>D</span>
+                        </div>
+                        <span class="topbar-user-name">Démo Réception (Receptionniste)</span>
+                    </div>
+                            </div>
+        </header>
+
+        <!-- Messages Flash (Succès / Erreurs) -->
+        
+        <!-- Contenu injecté des pages -->
+        <main class="app-content">
+
+<div class="container" style="max-width: 860px;">
+
+    <!-- En-tête de page -->
+    <div class="page-header">
+        <div class="page-header-left">
+            <h2>✏️ Modifier le Profil : Kanku Alice</h2>
+            <p>Mise à jour des coordonnées, de la spécialité ou du statut d'activité du praticien.</p>
+        </div>
+        <div class="page-header-actions">
+            <a href="../medecins/index.html" class="btn btn-secondary btn-sm">
+                ← Liste des médecins
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="card" style="box-shadow: var(--s-md);">
+        <form method="get" action="#" data-demo-form="true" onsubmit="return false;">
+            <input type="hidden" name="csrf_token" value="demo-only">
+
+            <!-- Section 1 : Identité & Spécialité -->
+            <div class="form-section" style="margin-top: 0;">
+                <div class="form-section-title">
+                    <span>👨‍⚕️</span> 1. Identité & Spécialité
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Nom <span class="required">*</span></label>
+                        <input type="text" name="nom" class="form-control" value="Kanku" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Prénom <span class="required">*</span></label>
+                        <input type="text" name="prenom" class="form-control" value="Alice" required>
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 16px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Spécialité <span class="required">*</span></label>
+                        <input type="text" name="specialite" class="form-control" value="Médecine générale" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Bureau / Emplacement</label>
+                        <input type="text" name="bureau" class="form-control" value="Bureau 2">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 : Coordonnées & Statut -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span>📞</span> 2. Coordonnées & Statut Opérationnel
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Téléphone professionnel <span class="required">*</span></label>
+                        <input type="text" name="telephone" class="form-control" value="+243 899 123 456" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Email professionnel <span class="required">*</span></label>
+                        <input type="email" name="email" class="form-control" value="alice.kanku@example.cd" required>
+                    </div>
+                </div>
+
+                <div style="margin-top: 16px;">
+                    <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" name="actif" value="1" checked style="width: 18px; height: 18px;">
+                        <span>Médecin actif (peut recevoir des réservations de consultations)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Section 3 : Avatar -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span>🖼️</span> 3. Photo & Avatar de Profil
+                </div>
+
+                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                                            <label style="cursor: pointer; text-align: center; font-size: 0.8rem; background: var(--white); border: 2px solid var(--border); border-radius: var(--r-md); padding: 10px; transition: var(--t-fast);">
+                            <input type="radio" name="photo" value="assets/images/doctor1.png"  style="margin-bottom: 6px;">
+                            <img src="../assets/images/doctor1.png" alt="Dr Homme 1" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 2px solid var(--blue-100);">
+                            <span style="display: block; margin-top: 6px; font-weight: 500;">Dr Homme 1</span>
+                        </label>
+                                            <label style="cursor: pointer; text-align: center; font-size: 0.8rem; background: var(--white); border: 2px solid var(--border); border-radius: var(--r-md); padding: 10px; transition: var(--t-fast);">
+                            <input type="radio" name="photo" value="assets/images/doctor2.png"  style="margin-bottom: 6px;">
+                            <img src="../assets/images/doctor2.png" alt="Dr Femme 2" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 2px solid var(--blue-100);">
+                            <span style="display: block; margin-top: 6px; font-weight: 500;">Dr Femme 2</span>
+                        </label>
+                                            <label style="cursor: pointer; text-align: center; font-size: 0.8rem; background: var(--white); border: 2px solid var(--border); border-radius: var(--r-md); padding: 10px; transition: var(--t-fast);">
+                            <input type="radio" name="photo" value="assets/images/doctor3.png"  style="margin-bottom: 6px;">
+                            <img src="../assets/images/doctor3.png" alt="Dr Homme 3" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 2px solid var(--blue-100);">
+                            <span style="display: block; margin-top: 6px; font-weight: 500;">Dr Homme 3</span>
+                        </label>
+                                            <label style="cursor: pointer; text-align: center; font-size: 0.8rem; background: var(--white); border: 2px solid var(--border); border-radius: var(--r-md); padding: 10px; transition: var(--t-fast);">
+                            <input type="radio" name="photo" value="assets/images/doctor4.png"  style="margin-bottom: 6px;">
+                            <img src="../assets/images/doctor4.png" alt="Dr Femme 4" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 2px solid var(--blue-100);">
+                            <span style="display: block; margin-top: 6px; font-weight: 500;">Dr Femme 4</span>
+                        </label>
+                                            <label style="cursor: pointer; text-align: center; font-size: 0.8rem; background: var(--white); border: 2px solid var(--border); border-radius: var(--r-md); padding: 10px; transition: var(--t-fast);">
+                            <input type="radio" name="photo" value="assets/images/doctor-default.png"  style="margin-bottom: 6px;">
+                            <img src="../assets/images/doctor-default.png" alt="Générique" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 2px solid var(--blue-100);">
+                            <span style="display: block; margin-top: 6px; font-weight: 500;">Générique</span>
+                        </label>
+                                    </div>
+            </div>
+
+            <div class="form-actions">
+                <a href="../medecins/index.html" class="btn btn-secondary">Annuler</a>
+                <button type="submit" class="btn btn-primary btn-lg">
+                    💾 Enregistrer les Modifications
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+﻿        </main><!-- /.app-content -->
+
+        <!-- ============================================================
+           PIED DE PAGE (Footer Dashboard)
+           ============================================================ -->
+        <footer class="app-footer">
+            <div class="footer-container">
+                <div class="footer-copy">
+                    &copy; 2026 <strong>Centre Médical Hope</strong> — Centre Médical Hope &bull; Département Informatique (PO II)
+                </div>
+                <div class="footer-extra-links">
+                    <span>12 Rue Limete, Kinshasa</span>
+                    <span class="footer-dot">&bull;</span>
+                    <a href="../tests/run_tests.html">Banc d'essais</a>
+                    <span class="footer-dot">&bull;</span>
+                    <a href="../rendez_vous/prendre.html">Prendre RDV</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /.app-main -->
+
+</div><!-- /.app-layout -->
+
+<!-- JavaScript avec vidage automatique de cache -->
+<script src="../assets/js/script.js"></script>
+</body>
+</html>

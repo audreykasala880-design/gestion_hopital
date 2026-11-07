@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prendre un Rendez-vous — Centre Médical Hope</title>
+    <meta name="description" content="Application web de gestion des rendez-vous médicaux — Centre Médical Hope Kinshasa">
+
+    <!-- Fonts : Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal avec vidage automatique du cache navigateur -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Favicon SVG en Vert Médical -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f764a'/><path d='M50 20 C35 10 20 25 20 40 C20 60 50 82 50 82 C50 82 80 60 80 40 C80 25 65 10 50 20 Z' fill='none' stroke='white' stroke-width='6'/><path d='M35 48 h8 l5 -12 l6 22 l5 -14 l4 4 h8' fill='none' stroke='%2334d399' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="app-body">
+
+<div class="app-layout">
+
+    <!-- ============================================================
+       SIDEBAR GAUCHE (Navigation Dashboard)
+       ============================================================ -->
+    <aside class="app-sidebar" id="appSidebar">
+        <div class="sidebar-header">
+            <a href="../index.html" class="sidebar-brand">
+                <div class="brand-symbol">
+                    <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
+                        <rect width="40" height="40" rx="10" fill="#095c3b"/>
+                        <path d="M20 9 C13 3 5 13 5 21 C5 29 20 37 20 37 C20 37 35 29 35 21 C35 13 27 3 20 9 Z" stroke="#34d399" stroke-width="2.5" fill="none"/>
+                        <path d="M12 21 h4 l3 -6 l4 12 l3 -8 l3 2 h4" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">Centre Médical Hope</span>
+                    <span class="brand-tag">Centre Médical Hope</span>
+                </div>
+            </a>
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <!-- Accueil (visible par tous) -->
+                <li>
+                    <a href="../index.html" class="sidebar-link ">
+                        <span class="sidebar-icon">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </span>
+                        <span class="sidebar-text">Accueil</span>
+                    </a>
+                </li>
+
+                <!-- Prendre RDV (visible par tous, redirige vers connexion si pas connecté) -->
+                <li>
+                    <a href="../rendez_vous/prendre.html" class="sidebar-link active">
+                        <span class="sidebar-icon">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                        </span>
+                        <span class="sidebar-text">Prendre RDV</span>
+                    </a>
+                </li>
+
+                <!-- ESPACE PATIENT -->
+                
+                <!-- SECTION GESTION CLINIQUE (Réservée au Staff : Admin / Réceptionniste) -->
+                                    <li style="padding: 12px 16px 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4);">
+                        Gestion Médicale
+                    </li>
+                    <li>
+                        <a href="../medecins/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </span>
+                            <span class="sidebar-text">Médecins</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../patients/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            <span class="sidebar-text">Patients (Base)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../salles/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><circle cx="6" cy="12" r="1"/></svg>
+                            </span>
+                            <span class="sidebar-text">Salles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../disponibilites/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </span>
+                            <span class="sidebar-text">Disponibilités</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../rendez_vous/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                            </span>
+                            <span class="sidebar-text">Liste des RDV</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../statistiques/index.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </span>
+                            <span class="sidebar-text">Statistiques</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../tests/run_tests.html" class="sidebar-link ">
+                            <span class="sidebar-icon">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                            </span>
+                            <span class="sidebar-text">Tests TP (PO II)</span>
+                        </a>
+                    </li>
+                            </ul>
+        </nav>
+
+        <!-- Bas de sidebar : Profil Utilisateur (Staff ou Patient ou Bouton Connexion) -->
+        <div class="sidebar-footer">
+                            <div class="sidebar-user">
+                    <div class="user-avatar-circle">
+                        <span>D</span>
+                    </div>
+                    <div class="user-details">
+                        <strong class="user-name">Démo Réception</strong>
+                        <span class="user-role">Receptionniste</span>
+                    </div>
+                    <a href="#demo-action" class="logout-icon-btn" title="Se déconnecter de l'espace pro" data-demo-action="logout">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    </a>
+                </div>
+                    </div>
+    </aside>
+
+    <!-- Overlay sombre pour mobile -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ============================================================
+       ZONE PRINCIPALE DU DASHBOARD (En-tête haut + Contenu)
+       ============================================================ -->
+    <div class="app-main">
+
+        <!-- Top bar supérieure -->
+        <header class="app-topbar">
+            <div class="topbar-left">
+                <button class="topbar-menu-toggle" id="topbarMenuToggle" aria-label="Ouvrir le menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <h1 class="topbar-page-title">Prise de rendez-vous</h1>
+            </div>
+
+            <div class="topbar-right">
+                <!-- Notifications cliniques -->
+                <div class="topbar-action-btn" title="Centre Médical Hope">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <span class="notification-dot"></span>
+                </div>
+
+                <!-- Utilisateur dropdown / pill -->
+                                    <div class="topbar-user-pill">
+                        <div class="topbar-user-avatar">
+                            <span>D</span>
+                        </div>
+                        <span class="topbar-user-name">Démo Réception (Receptionniste)</span>
+                    </div>
+                            </div>
+        </header>
+
+        <!-- Messages Flash (Succès / Erreurs) -->
+        
+        <!-- Contenu injecté des pages -->
+        <main class="app-content">
+
+<div class="container" style="max-width: 1200px;">
+
+    <!-- En-tête de page moderne Centre Médical Hope -->
+    <div class="page-top-banner">
+        <div class="page-top-banner-left">
+            <div class="page-banner-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+            </div>
+            <div>
+                <div class="page-banner-title">Prise de rendez-vous</div>
+                <div class="page-banner-sub">Planifier une consultation avec vérification instantanée des disponibilités</div>
+            </div>
+        </div>
+        <div>
+                            <a href="../rendez_vous/index.html" class="btn btn-secondary">
+                    ← Liste des rendez-vous
+                </a>
+                    </div>
+    </div>
+
+    <!-- Alertes d'erreurs et conflits détectés -->
+    
+    <!-- Boîte de suggestions en cas de conflit -->
+    
+    <!-- Grille 2 colonnes (Formulaire à gauche + Carte d'accompagnement à droite) -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start;">
+        
+        <!-- Formulaire de réservation -->
+        <div class="card" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--r-xl); padding: 26px; box-shadow: var(--shadow-sm);">
+            <form method="get" action="#" data-demo-form="true" onsubmit="return false;">
+                <input type="hidden" name="csrf_token" value="demo-only">
+
+                <!-- Section 1 : Patient -->
+                <div class="form-section" style="margin-top: 0;">
+                    <div class="form-section-title">
+                        <span>👤</span> 1. Patient Bénéficiaire
+                    </div>
+
+                                            <!-- Staff connecté : choix parmi tous les patients -->
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;">
+                                <label class="form-label" style="margin-bottom: 0;">Dossier Patient <span class="required">*</span></label>
+                                <a href="../patients/ajouter.html?redirect_rdv=1" style="font-size: 0.8rem; font-weight: 600; color: var(--teal-500);">
+                                    + Inscrire un nouveau patient
+                                </a>
+                            </div>
+                            <select name="id_patient" class="form-control" required>
+                                <option value="">-- Sélectionner un patient dans la base --</option>
+                                                                    <option value="1" >
+                                        #1 — Patient Démo (+243 000 000 000)
+                                    </option>
+                                                            </select>
+                        </div>
+                                    </div>
+
+                <!-- Section 2 : Praticien et Localisation -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span>🩺</span> 2. Praticien et Salle
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Médecin traitant <span class="required">*</span></label>
+                            <select name="id_medecin" id="id_medecin" class="form-control" required>
+                                <option value="">-- Sélectionner un médecin --</option>
+                                                                    <option value="1" >
+                                        Kanku Alice (Médecine générale)
+                                    </option>
+                                                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Salle de consultation <span class="required">*</span></label>
+                            <select name="id_salle" id="id_salle" class="form-control" required>
+                                <option value="">-- Sélectionner une salle --</option>
+                                                                    <option value="1" >
+                                        Salle 01 [Disponible]
+                                    </option>
+                                                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 : Date, Horaires & Durée -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span>⏰</span> 3. Date, Heure et Durée
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Date & Heure de début <span class="required">*</span></label>
+                            <input type="datetime-local" name="date_heure" id="date_heure" class="form-control" value="2026-11-08T09:00" required>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Durée de la séance <span class="required">*</span></label>
+                            <select name="duree_minutes" id="duree_minutes" class="form-control" required>
+                                <option value="15" >15 minutes (Visite rapide)</option>
+                                <option value="30" selected>30 minutes (Standard)</option>
+                                <option value="45" >45 minutes (Examen approfondi)</option>
+                                <option value="60" >60 minutes (Bilan complet)</option>
+                                <option value="90" >90 minutes (Soin spécialisé)</option>
+                            </select>
+                            <span id="apercu_heure_fin" class="badge badge-info" style="margin-top: 8px; display: none;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 : Motif & Exigences médicales -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span>📋</span> 4. Motif & Exigences Techniques
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Motif de consultation <span class="required">*</span></label>
+                            <input type="text" name="motif" class="form-control" placeholder="Ex: Consultation cardiologie, bilan de contrôle..." value="" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Équipement spécifique (Optionnel)</label>
+                            <input type="text" name="equipement_requis" class="form-control" placeholder="Ex: ECG, Échographe..." value="">
+                            <span class="form-hint">Le moteur vérifiera que la salle dispose bien de cet équipement.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Remarques ou consignes particulières</label>
+                        <textarea name="remarques" class="form-control" style="min-height: 75px;" placeholder="Ex: Antécédents allergiques, patient sous traitement..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Boutons de soumission -->
+                <div class="form-actions" style="margin-top: 24px;">
+                                            <a href="../rendez_vous/index.html" class="btn btn-secondary">
+                            Annuler
+                        </a>
+                                        <button type="submit" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #059669, #047857); border: none;">
+                        Confirmer le rendez-vous
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Panneau latéral d'accompagnement (style mockup Centre Médical Hope) -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card" style="background: linear-gradient(135deg, #e3f5eb 0%, #edf9f2 100%); border: 1px solid #ccebdb; border-radius: var(--r-xl); padding: 24px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <div style="width: 36px; height: 36px; border-radius: 8px; background-color: var(--teal-500); color: #fff; display: flex; align-items: center; justify-content: center;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <h3 style="font-size: 1.05rem; font-weight: 700; color: #082c1e; margin: 0;">Une consultation au bon moment</h3>
+                </div>
+                <p style="font-size: 0.85rem; color: #0d4430; line-height: 1.5; margin-bottom: 16px;">
+                    Des soins de qualité, en toute confiance. Notre moteur de réservation garantit zéro chevauchement horaire.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.825rem; color: #06432b;">
+                    <div style="display: flex; align-items: flex-start; gap: 8px;">
+                        <span style="color: #0d9488; font-weight: 700;">✓</span>
+                        <span>Vérification automatique de la disponibilité du praticien</span>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 8px;">
+                        <span style="color: #0d9488; font-weight: 700;">✓</span>
+                        <span>Contrôle d'attribution exclusive de la salle d'examen</span>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 8px;">
+                        <span style="color: #0d9488; font-weight: 700;">✓</span>
+                        <span>Validation des équipements médicaux nécessaires</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--r-xl); padding: 22px;">
+                <h4 style="font-size: 0.925rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>📞</span> Assistance & Urgences
+                </h4>
+                <p style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+                    Pour les cas urgents ou des modifications de dernière minute, contactez directement l'accueil clinique :
+                </p>
+                <div style="background-color: #f8fafc; border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; font-weight: 600; color: var(--teal-500);">
+                    +243 81 000 0000 &bull; 24h/24
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+﻿        </main><!-- /.app-content -->
+
+        <!-- ============================================================
+           PIED DE PAGE (Footer Dashboard)
+           ============================================================ -->
+        <footer class="app-footer">
+            <div class="footer-container">
+                <div class="footer-copy">
+                    &copy; 2026 <strong>Centre Médical Hope</strong> — Centre Médical Hope &bull; Département Informatique (PO II)
+                </div>
+                <div class="footer-extra-links">
+                    <span>12 Rue Limete, Kinshasa</span>
+                    <span class="footer-dot">&bull;</span>
+                    <a href="../tests/run_tests.html">Banc d'essais</a>
+                    <span class="footer-dot">&bull;</span>
+                    <a href="../rendez_vous/prendre.html">Prendre RDV</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /.app-main -->
+
+</div><!-- /.app-layout -->
+
+<!-- JavaScript avec vidage automatique de cache -->
+<script src="../assets/js/script.js"></script>
+</body>
+</html>
