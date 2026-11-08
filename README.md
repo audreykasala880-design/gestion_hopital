@@ -17,6 +17,7 @@ Le projet est maintenant un site statique : aucune installation PHP, aucun serve
 - L’authentification est désactivée : aucun compte ni mot de passe n’est vérifié.
 - Les tests PHP/SQL de l’ancienne version ne s’exécutent plus; la page [`tests/run_tests.html`](./tests/run_tests.html) explique cette limite.
 - Les archives d’e-mails historiques sont exclues du dépôt public; elles peuvent contenir des renseignements personnels.
+- L’interface s’adapte aux écrans mobiles : formulaires et blocs passent en une colonne, tableaux défilent horizontalement et le menu latéral devient un tiroir.
 
 ## Écrans principaux
 
@@ -29,4 +30,4 @@ Le projet est maintenant un site statique : aucune installation PHP, aucun serve
 - Disponibilités : [`disponibilites/index.html`](./disponibilites/index.html), [maintenance](./disponibilites/maintenance-salles.html), [horaires](./disponibilites/horaires-medecins.html)
 - Statistiques : [`statistiques/index.html`](./statistiques/index.html)
 
-Le fichier CSS existant et les modèles HTML autonomes d’e-mails sont conservés sans modification.
+La feuille de style gère les adaptations aux écrans mobiles; les pages HTML autonomes d’e-mails ne font pas partie des écrans de démonstration.
